@@ -1,0 +1,4 @@
+Debug mode enabled. Remove this file to start the app normally.
+
+Debug-Username: StarkerHengst
+Debug-Password: LetMeIn321

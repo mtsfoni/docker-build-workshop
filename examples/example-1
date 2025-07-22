@@ -1,2 +1,0 @@
-FROM busybox
-CMD ["echo", "🚀 Welcome to the Docker Build Workshop! 🎉"]
