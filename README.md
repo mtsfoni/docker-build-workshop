@@ -3,8 +3,18 @@
 # Slides
 
 ---
+Why would we want to build images?
+
+Ship Apps.
+
+Fix/Change/Extend existing Images. (e.g. Add custom root CA)
+
+
+---
+
 
 Whats a dockerfile
+
 
 -> Graphic:
 Dockerfile -> Docker build -> Image -> Docker run -> Container
