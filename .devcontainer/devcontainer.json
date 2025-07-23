@@ -8,7 +8,8 @@
     "vscode": {
       "extensions": [
         "marp-team.marp-vscode",
-        "mathematic.vscode-pdf"
+        "mathematic.vscode-pdf",
+        "sanaajani.taskrunnercode"
       ]
     }
   }
