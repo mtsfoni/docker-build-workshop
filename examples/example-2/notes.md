@@ -15,5 +15,6 @@ Fix the file:
 Execute with 
 
 ``` sh
-"" > index.js;  docker build -t advanced-docker .
+"" >> index.js;  docker build -t advanced-docker .
+docker run advanced-docker
 ```

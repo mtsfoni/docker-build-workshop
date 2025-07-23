@@ -1,5 +1,5 @@
 # A: Start from a base image
-FROM node:24
+FROM node:22
 
 # B: Copy local files into the image
 COPY . /app

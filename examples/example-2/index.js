@@ -1,15 +1,14 @@
-
 const fs = require('fs');
-const chalk = require('chalk');
+const colors = require('colors');
 
 if (fs.existsSync('./debug.txt')) {
-  console.error(chalk.yellow("🚨 Found debug.txt — remaining in debug mode!"));
+  console.error("🚨 Found debug.txt — remaining in debug mode!".yellow);
   process.exit(1);
 }
 
 if (process.getuid && process.getuid() === 0) {
-  console.error(chalk.red("🚨 App is running as root! Please use a non-root user."));
+  console.error("🚨 App is running as root! Please use a non-root user.".red);
   process.exit(1);
 }
 
-console.log(chalk.green("✅ App is running!"));
+console.log("✅ App is running!".green);

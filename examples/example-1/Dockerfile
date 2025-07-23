@@ -1,5 +1,5 @@
 # A: Start from the node base image
-FROM node:24
+FROM node:22
 
 # Todo: Copy local files into the image
 
