@@ -1,8 +1,10 @@
 # A: Start from the node base image
 FROM node:22
 
-# Todo: Copy local files into the image
+# TODO: Set a working directory inside the container (hint: /app)
 
-# Todo: Execute npm install
+# TODO: Copy local files into the image
 
-# Todo: Set index.js to run when the container starts
+# TODO: Execute npm install
+
+# TODO: Set index.js to run when the container starts

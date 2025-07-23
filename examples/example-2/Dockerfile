@@ -5,7 +5,6 @@ WORKDIR /app
 # Copy Files
 COPY . .
 
-# BAD PRACTICE: Install everything as root (default user)
 RUN apt-get update && apt-get install -y curl && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs

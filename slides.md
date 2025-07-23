@@ -108,6 +108,19 @@ CMD ["echo", "Hello World"]
 
 ---
 
+# `WORKDIR` - Arbeitsverzeichnis im Image
+
+Setzt das Verzeichnis, in dem alle nachfolgenden Befehle ausgeführt werden
+
+```dockerfile
+WORKDIR /app
+```
+
+* Das Verzeichnis wird angelegt, wenn es nicht existiert
+* Mehrfaches aufrufen von `WORKDIR` ist erlaubt und ändert den Pfad.
+
+---
+
 # Kurzübersicht der 4 Dockerfile-Befehle
 
 - `FROM`: Legt das Basis-Image fest, auf dem das neue Image aufbaut.
@@ -117,6 +130,8 @@ CMD ["echo", "Hello World"]
 - `RUN`: Führt Befehle während des Builds aus, z. B. zur Installation von Software.
 
 - `CMD`: Definiert den Standardbefehl, der beim Starten des Containers ausgeführt wird.
+
+- `WORKDIR`: Setzt das Verzeichnis für die weiteren Befehlen.
 
 ---
 
