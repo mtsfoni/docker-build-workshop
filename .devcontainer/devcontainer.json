@@ -8,7 +8,7 @@
     "vscode": {
       "extensions": [
         "marp-team.marp-vscode",
-        "tomoki1207.pdf"
+        "mathematic.vscode-pdf"
       ]
     }
   }
