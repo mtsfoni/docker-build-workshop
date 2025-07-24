@@ -258,6 +258,21 @@ Explanation Multistage build
 
 ---
 
+further dockerfile settings
+
+Brief mention of environment variables (ENV)
+Healthchecks (HEALTHCHECK)
+Exposing ports (EXPOSE)
+Volume mounts (VOLUME)
+
+---
+
+
+Tagging and pushing images to a registry
+
+---
+
+
 | Type                | Description                        | Use Case                              | Example                                                |
 | ------------------- | ---------------------------------- | ------------------------------------- | ------------------------------------------------------ |
 | `scratch`           | Empty. The abyss.                  | Final stage for compiled binaries     | `FROM scratch`                                         |
