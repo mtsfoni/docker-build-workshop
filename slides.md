@@ -32,11 +32,28 @@ Man kann es sich wie ein **Rezept zum Bauen eines Images** vorstellen.
 
 ---
 
+# Docker Build Syntax
+
+Um ein Docker Image zu bauen, verwende:
+
+```bash
+docker build -t <image-name> <build-context>
+```
+Beispiel:
+```bash
+docker build -t my-app .
+```
+
+- `-t <image-name>` gibt dem Image einen Namen (Tag)
+- `<build-context>` ist meist der aktuelle Ordner (`.`)
+
+---
+
 # Vom Dockerfile zum Container
 
 <!-- Hier später Excalidraw-Grafik einfügen -->
 
-<img src="./images/dockerfile-image-container.png" />
+<img src="./.images/dockerfile-image-container.png" />
 
 
 Dieser Ablauf beschreibt, wie aus Quellcode und Instruktionen ein laufender Container wird.
@@ -121,7 +138,7 @@ WORKDIR /app
 
 ---
 
-# Kurzübersicht der 4 Dockerfile-Befehle
+# Kurzübersicht der 5 Dockerfile-Befehle
 
 - `FROM`: Legt das Basis-Image fest, auf dem das neue Image aufbaut.
 
@@ -141,7 +158,7 @@ WORKDIR /app
 - Ergänze die Dockerfile, das:  
   - die `index.js` und `packages.json` ins Image kopiert wird
   - im Image `npm install`
-  - Beim start des containers die Anwendung `node` mit der `index.js` aufgerufen wird
+  - Beim Start des Containers die Anwendung `node` mit der `index.js` aufgerufen wird
 - Baue und starte das Image
 
 Erwartete Ausgabe:
@@ -240,11 +257,11 @@ Vorteile:
 
 # 🧪 Übung 2 – Diese Dockerfile ist schrecklich!
 
-Das Ding läuft als root. Es wird nicht Gecached. Es übernimmt Debug-Dateien mit rein.
+Das Ding läuft als root. Es wird nicht gecached. Es übernimmt Debug-Dateien mit hinein.
 
 Fix it!
 
-Simuliere Code-Änderungen und erstelle das Image neu.
+Simuliere Code-Änderungen und erstelle das Image neu:
 `"" >> index.js && docker build -t safe-node-app .`
 `docker run --rm safe-node-app`
 
@@ -254,29 +271,90 @@ Simuliere Code-Änderungen und erstelle das Image neu.
 
 ---
 
-Explanation Multistage build
+# Dockerfile: ENV & HEALTHCHECK
+
+**ENV** – Setzt Umgebungsvariablen im Container
+```dockerfile
+ENV NODE_ENV=production
+```
+
+**HEALTHCHECK** – Prüft, ob der Container "gesund" ist
+```dockerfile
+HEALTHCHECK CMD curl --fail http://localhost:8080 || exit 1
+```
 
 ---
 
-further dockerfile settings
+# Dockerfile: EXPOSE & VOLUME (optional)
 
-Brief mention of environment variables (ENV)
-Healthchecks (HEALTHCHECK)
-Exposing ports (EXPOSE)
-Volume mounts (VOLUME)
+**EXPOSE** *(optional)* – Dokumentiert, welche Ports der Container nutzt (nur als Hinweis, kein Muss)
+```dockerfile
+EXPOSE 8080
+```
+
+**VOLUME** *(optional)* – Definiert einen Speicherort für persistente Daten (nur als Empfehlung)
+```dockerfile
+VOLUME /data
+```
+
+Nur das Wichtigste – Details und Best Practices gibt es später!
 
 ---
 
+# Image Taggen
 
-Tagging and pushing images to a registry
+Bevor du ein Image pushen kannst, musst du es mit einem Tag versehen.
+
+**Syntax:**
+```bash
+docker tag <image> <registry>/<user>/<repo>:<tag>
+```
+Beispiel:
+```bash
+docker tag my-app docker.io/myuser/my-app:latest
+```
 
 ---
 
+# Image Pushen
+
+Ein **Registry** ist ein zentraler Speicherort für Docker Images (z.B. Docker Hub, GitHub Container Registry, private Registry).
+
+**Syntax:**
+```bash
+docker push <registry>/<user>/<repo>:<tag>
+```
+Beispiel:
+```bash
+docker push docker.io/myuser/my-app:latest
+```
+
+*Images müssen vor dem Push getaggt werden!*
+
+---
+
+# Multistage Build (Erklärung)
+
+Mit **Multistage Builds** kannst du mehrere `FROM`-Anweisungen in einem Dockerfile nutzen, um Images effizienter und schlanker zu bauen.
+
+**Syntax:**
+- Mehrere `FROM <image> AS <name>` Abschnitte
+- Mit `COPY --from=<name>` kannst du gezielt Dateien aus vorherigen Stages übernehmen
+
+**Vorteile:**
+- Nur die wirklich benötigten Dateien landen im finalen Image
+- Build-Tools und Abhängigkeiten bleiben draußen
+- Images werden kleiner und sicherer
+
+
+---
+
+# Base Images (advanced)
 
 | Type                | Description                        | Use Case                              | Example                                                |
 | ------------------- | ---------------------------------- | ------------------------------------- | ------------------------------------------------------ |
-| `scratch`           | Empty. The abyss.                  | Final stage for compiled binaries     | `FROM scratch`                                         |
-| `busybox`, `alpine` | Minimal Linux + POSIX tools        | Small containers, simple scripts      | `FROM busybox`, `FROM alpine`                          |
-| SDK/Runtime Images  | Full-featured language stack       | Build & run apps (Java, .NET, Python) | `FROM mcr.microsoft.com/dotnet/sdk`, `FROM openjdk:17` |
+| `scratch`           | Empty.                | Final stage for compiled binaries     | `FROM scratch`                                         |
+| `busybox`, `alpine` | Minimal Linux         | Small containers, simple scripts      | `FROM busybox`, `FROM alpine`                          |
+| SDK/Runtime Images  | Full-featured language stack       | Build & run apps (Java, .NET, Python) | `FROM openjdk:17` |
 | `distroless`        | Runtime-only, no shell, no baggage | Secure production deployments         | `FROM gcr.io/distroless/java`                          |
 
