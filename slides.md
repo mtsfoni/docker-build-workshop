@@ -238,7 +238,7 @@ Vorteile:
 
 ---
 
-# 🧪 Übung 2a – Diese Dockerfile ist schrecklich!
+# 🧪 Übung 2 – Diese Dockerfile ist schrecklich!
 
 Das Ding läuft als root. Es wird nicht Gecached. Es übernimmt Debug-Dateien mit rein.
 
@@ -254,23 +254,7 @@ Simuliere Code-Änderungen und erstelle das Image neu.
 
 ---
 
-# 🧪 Übung 3 – Build-Kontext & .dockerignore
-
-* Wechsel in `examples/example-3`
-* Erstelle `.dockerignore`, die Folgendes ignoriert:
-
-  * `.git/`
-  * `node_modules/`
-  * `*.log`
-* Baue das Image und inspiziere es:
-
-```bash
-docker build -t clean-image .
-docker run -it clean-image sh
-```
-
-➡️ Prüfe, dass die ignorierten Dateien wirklich fehlen.
-
+Explanation Multistage build
 
 ---
 
