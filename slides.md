@@ -51,8 +51,6 @@ docker build -t my-app .
 
 # Vom Dockerfile zum Container
 
-<!-- Hier später Excalidraw-Grafik einfügen -->
-
 <img src="./.images/dockerfile-image-container.png" />
 
 
