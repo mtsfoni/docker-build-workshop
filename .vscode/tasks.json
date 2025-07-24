@@ -4,7 +4,7 @@
     {
       "label": "Docker: Build and Run Exercise 1",
       "type": "shell",
-      "command": "docker build -t example-1 ./examples/example-1 && docker run --rm example-1",
+      "command": "docker build -t example-1 ./example-1 && docker run --rm example-1",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -17,7 +17,7 @@
     {
       "label": "Docker: Build and Run Exercise 2",
       "type": "shell",
-      "command": "echo \"// touched at $(date)\" >> ./examples/example-2/index.js && docker build -t example-2 ./examples/example-2 && docker run --rm example-2",
+      "command": "echo \"// touched at $(date)\" >> .//example-2/index.js && docker build -t example-2 ./example-2 && docker run --rm example-2",
       "group": {
         "kind": "build",
         "isDefault": false
