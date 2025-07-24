@@ -356,3 +356,16 @@ Mit **Multistage Builds** kannst du mehrere `FROM`-Anweisungen in einem Dockerfi
 | SDK/Runtime Images  | Full-featured language stack       | Build & run apps (Java, .NET, Python) | `FROM openjdk:17` |
 | `distroless`        | Runtime-only, no shell, no baggage | Secure production deployments         | `FROM gcr.io/distroless/java`                          |
 
+---
+
+# `ENTRYPOINT` – Nur für Fortgeschrittene
+
+`ENTRYPOINT ["node"]`  
+`CMD ["index.js"]`
+
+Nutze `ENTRYPOINT`, wenn du genau kontrollieren willst, **was** immer beim Start ausgeführt wird.
+
+➡️ Kombinierbar mit `CMD` für Argumente  
+➡️ Wird **nicht** so leicht überschrieben wie `CMD`
+
+💡 Für später, wenn du Wrapper-Skripte oder Tools baust
