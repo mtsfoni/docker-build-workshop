@@ -9,8 +9,8 @@ paginate: true
 
 # Warum Docker Images bauen?
 
-* 📦 **Apps ausliefern**, unabhängig von der Umgebung
-* 🔧 **Vorhandene Images anpassen** für Unternehmensanforderungen
+* 📦 **Apps ausliefern**
+* 🔧 **Vorhandene Images anpassen**
 
   * z. B. interne Tools installieren
   * Eigene **Root-CA-Zertifikate** einfügen
