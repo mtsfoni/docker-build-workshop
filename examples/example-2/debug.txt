@@ -1,4 +1,0 @@
-Debug mode enabled. Exclude this file to start the app normally.
-
-Debug-Username: StarkerHengst
-Debug-Password: LetMeIn321

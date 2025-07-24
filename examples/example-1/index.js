@@ -1,1 +1,0 @@
-console.log("🚀 Welcome to your first Dockerized Node.js app!");

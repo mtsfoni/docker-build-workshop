@@ -1,5 +1,0 @@
-# exclude test-files
-./test/*
-
-# exclude notes.md
-./notes.md
